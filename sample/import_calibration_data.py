@@ -69,7 +69,14 @@ uvs = numpy.array([
     1, 1, 
     0, 1
 ], 'float32')
-
+'''
+uvs = numpy.array([
+    0, 0, 
+    1, 0,
+    1, 1, 
+    0, 1
+], 'float32')
+'''
 m = bpy.data.meshes.new(name='chessboard')
 m.vertices.add(4)
 m.vertices.foreach_set('co', vertices)
@@ -95,7 +102,8 @@ mapping.location = 200, 300
 mapping.inputs['Scale'].default_value = (corners[0]+1, corners[1]+1, 1)
 checktex = nodes.new(type='ShaderNodeTexChecker')
 checktex.location = 400, 300
-checktex.inputs['Color2'].default_value = 0, 0, 0, 1
+#checktex.inputs['Color2'].default_value = 0, 0, 0, 1
+checktex.inputs['Color2'].default_value = 1, .5, .2, 1
 checktex.inputs['Scale'].default_value = 1.0
 emission = nodes.new(type='ShaderNodeEmission')
 emission.location = 600, 300
